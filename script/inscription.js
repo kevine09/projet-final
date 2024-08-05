@@ -1,4 +1,3 @@
-// Exemple de script inscription.js
 document.addEventListener("DOMContentLoaded", function() {
     console.log("Inscription script loaded");
     // Sélectionner le formulaire
@@ -64,6 +63,6 @@ document.addEventListener("DOMContentLoaded", function() {
             event.preventDefault();
             // Afficher les messages d'erreur dans une alerte
             alert(messages.join("\n"));
-        }
-    });
+        }
+    });
 });
