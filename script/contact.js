@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const email = contactForm.querySelector('input[type="email"]').value.trim();
         const message = contactForm.querySelector('textarea').value.trim();
 
+        
         // Vérifier que tous les champs sont remplis
         if (name === '' || email === '' || message === '') {
             // Afficher une alerte si un ou plusieurs champs sont vides

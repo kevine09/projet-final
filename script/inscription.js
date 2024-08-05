@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
             messages.push("L'email n'est pas valide.");
         }
 
+        
         // Validation du Mot de passe
         // Vérifier que le mot de passe a au moins 6 caractères
         if (passwordInput.value.length < 6) {
