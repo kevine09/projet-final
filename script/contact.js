@@ -1,44 +1,39 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const contactForm = document.querySelector('.contact form');
+    const contactForm = document.getElementById('contact-form');
+    const messageContainer = document.getElementById('message-container');
 
     // Ajouter un événement de soumission au formulaire
     contactForm.addEventListener('submit', function(event) {
         // Empêcher l'envoi par défaut du formulaire
         event.preventDefault();
 
-        // Récupérer les valeurs des champs de formulaire
+        // Récupérer les valeurs des champs du formulaire
         const name = contactForm.querySelector('input[type="text"]').value.trim();
         const email = contactForm.querySelector('input[type="email"]').value.trim();
         const message = contactForm.querySelector('textarea').value.trim();
 
-        // Vérifier que tous les champs sont remplis
-        if (name === '' || email === '' || message === '') {
-            // Afficher une alerte si un ou plusieurs champs sont vides
-            alert('Veuillez remplir tous les champs.');
+        // Valider les champs (exemple simple avec nom et email non vides)
+        if (name === '' || email === '') {
+            displayMessage('Veuillez remplir tous les champs.', 'error');
             return;
         }
 
-        // Afficher les valeurs des champs dans la console (pour le débogage)
-        console.log('Nom:', name);
-        console.log('Email:', email);
-        console.log('Message:', message);
-
-        // Réinitialiser le formulaire après l'envoi
-        contactForm.reset();
-        // Afficher un message de succès
-        alert('Votre message a été envoyé avec succès!');
+        // Simuler l'envoi du formulaire (ici, juste pour l'exemple)
+        setTimeout(function() {
+            displayMessage('Message envoyé avec succès!', 'success');
+            contactForm.reset();
+        }, 1000);
     });
 
-    // Sélectionner tous les liens sociaux
-    const socialLinks = document.querySelectorAll('.social-icons a');
+    function displayMessage(messageText, type) {
+        const messageElement = document.createElement('div');
+        messageElement.textContent = messageText;
+        messageElement.classList.add('message', type, 'show');
+        messageContainer.appendChild(messageElement);
 
-    // Ajouter un événement de clic à chaque lien social
-    socialLinks.forEach(link => {
-        link.addEventListener('click', function(event) {
-            // Empêcher l'action par défaut du lien
-            event.preventDefault();
-            // Afficher un message d'alerte pour indiquer que la fonctionnalité est en cours de développement
-            alert('Fonctionnalité de connexion sociale en cours de développement.');
-       });
-    });
+        // Supprimer le message après un court délai
+        setTimeout(function() {
+            messageElement.remove();
+        }, 3000); // Supprimer après 3 secondes (ajustez selon vos besoins)
+    }
 });

@@ -98,6 +98,36 @@ a {
 a:hover {
     color: rgb(211, 120, 131); 
 }
+/* Styles pour les messages */
+#message-container {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 400px; /* Ajuster la largeur maximale selon vos préférences */
+}
+
+.message {
+    background-color: rgba(0, 0, 0, 0.7); /* Fond semi-transparent */
+    color: #fff; /* Texte blanc */
+    padding: 10px 20px; /* Espacement intérieur */
+    margin: 5px 0; /* Marge entre les messages */
+    border-radius: 5px; /* Coins arrondis */
+    font-size: 14px; /* Taille du texte */
+    text-align: center; /* Centrer le texte */
+    opacity: 0; /* Initialement invisible */
+    transition: opacity 0.5s ease-in-out; /* Transition pour l'animation d'opacité */
+}
+
+.message.show {
+    opacity: 1; /* Afficher le message */
+}
 
 @media screen and (max-width: 768px) {
     .container {

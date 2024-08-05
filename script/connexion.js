@@ -32,8 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Vérifier si tous les champs sont remplis
         if (name === '' || email === '' || password === '') {
-            // Afficher une alerte si des champs sont vides
-            alert('Veuillez remplir tous les champs.');
+            displayMessage('Veuillez remplir tous les champs.', 'error');
             return;
         }
 
@@ -42,7 +41,8 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Email:', email);
         console.log('Mot de passe:', password);
 
-        // Réinitialiser le formulaire après soumission
+        displayMessage('Inscription réussie!', 'success');
+
         signUpForm.reset();
     });
 
@@ -57,8 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Vérifier si tous les champs sont remplis
         if (email === '' || password === '') {
-            // Afficher une alerte si des champs sont vides
-            alert('Veuillez remplir tous les champs.');
+            displayMessage('Veuillez remplir tous les champs.', 'error');
             return;
         }
 
@@ -66,7 +65,30 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Email:', email);
         console.log('Mot de passe:', password);
 
-        // Réinitialiser le formulaire après soumission
+        displayMessage('Connexion réussie!', 'success');
+
         signInForm.reset();
     });
+
+    function displayMessage(message, messageType) {
+        const messageContainer = document.getElementById('message-container');
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('message', messageType);
+        messageElement.textContent = message;
+
+        messageContainer.appendChild(messageElement);
+
+        // Afficher le message avec une animation
+        requestAnimationFrame(() => {
+            messageElement.classList.add('show');
+        });
+
+        // Supprimer le message après quelques secondes
+        setTimeout(() => {
+            messageElement.classList.remove('show');
+            setTimeout(() => {
+                messageElement.remove();
+            }, 500); // Attendre la fin de l'animation avant de supprimer l'élément
+        }, 3000); // Supprime le message après 3 secondes
+    }
 });
