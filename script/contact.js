@@ -1,6 +1,12 @@
+
+document.addEventListener("DOMContentLoaded", function() {
+    console.log("Contact script loaded");
+    
+
 document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contact-form');
     const messageContainer = document.getElementById('message-container');
+
 
     // Ajouter un événement de soumission au formulaire
     contactForm.addEventListener('submit', function(event) {
@@ -12,9 +18,17 @@ document.addEventListener('DOMContentLoaded', function() {
         const email = contactForm.querySelector('input[type="email"]').value.trim();
         const message = contactForm.querySelector('textarea').value.trim();
 
+
+        
+        // Vérifier que tous les champs sont remplis
+        if (name === '' || email === '' || message === '') {
+            // Afficher une alerte si un ou plusieurs champs sont vides
+            alert('Veuillez remplir tous les champs.');
+
         // Valider les champs (exemple simple avec nom et email non vides)
         if (name === '' || email === '') {
             displayMessage('Veuillez remplir tous les champs.', 'error');
+
             return;
         }
 

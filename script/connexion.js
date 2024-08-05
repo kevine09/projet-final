@@ -92,3 +92,5 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 3000); // Supprime le message après 3 secondes
     }
 });
+
+
