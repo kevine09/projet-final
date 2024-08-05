@@ -1,5 +1,6 @@
-
+// Exemple de script inscription.js
 document.addEventListener("DOMContentLoaded", function() {
+    console.log("Inscription script loaded");
     // Sélectionner le formulaire
     const form = document.querySelector("form");
     

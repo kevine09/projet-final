@@ -1,6 +1,6 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const contactForm = document.querySelector('.contact form');
-
+document.addEventListener("DOMContentLoaded", function() {
+    console.log("Contact script loaded");
+    
     // Ajouter un événement de soumission au formulaire
     contactForm.addEventListener('submit', function(event) {
         // Empêcher l'envoi par défaut du formulaire
