@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function() {
     console.log("Inscription script loaded");
     // Sélectionner le formulaire
@@ -9,20 +10,25 @@ document.addEventListener("DOMContentLoaded", function() {
     const passwordInput = document.getElementById("password");
     const phoneInput = document.getElementById("phone");
 
-    // Ajouter un événement de soumission au formulaire
-    form.addEventListener("submit", function(event) {
-        // Initialiser la validité du formulaire à true
-        let valid = true;
-        // Créer un tableau pour stocker les messages d'erreur
-        let messages = [];
+document.addEventListener('DOMContentLoaded', function() {
+    const signupForm = document.getElementById('signup-form');
+    const messageContainer = document.getElementById('message-container');
 
-        // Validation du champ Nom
-        if (nameInput.value.trim() === "") {
-            // Si le champ Nom est vide, marquer le formulaire comme invalide
-            valid = false;
-            // Ajouter un message d'erreur
-            messages.push("Le nom est requis.");
+    signupForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+
+        // Récupérer les valeurs des champs du formulaire
+        const name = signupForm.querySelector('input[name="name"]').value.trim();
+        const email = signupForm.querySelector('input[name="email"]').value.trim();
+        const password = signupForm.querySelector('input[name="password"]').value.trim();
+
+        // Valider les champs (exemple simple avec nom, email et mot de passe non vides)
+        if (name === '' || email === '' || password === '') {
+            displayMessage('Veuillez remplir tous les champs requis.', 'error');
+            return;
         }
+
 
         // Validation de l'Email
         const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
@@ -44,18 +50,20 @@ document.addEventListener("DOMContentLoaded", function() {
             messages.push("Le mot de passe doit comporter au moins 6 caractères.");
         }
 
-        // Validation du Téléphone (optionnel)
-        // Vérifier que le champ Téléphone n'est pas vide
-        if (phoneInput.value.trim() !== "") {
-            const phonePattern = /^\+?\d{7,15}$/;
-            // Utiliser une expression régulière pour vérifier le format du numéro de téléphone
-            if (!phonePattern.test(phoneInput.value.trim())) {
-                // Si le format du téléphone est incorrect, marquer le formulaire comme invalide
-                valid = false;
-                // Ajouter un message d'erreur
-                messages.push("Le numéro de téléphone n'est pas valide.");
-            }
-        }
+        // Simuler l'enregistrement du formulaire (ici, juste pour l'exemple)
+        setTimeout(function() {
+            displayMessage('Compte créé avec succès!', 'success');
+            signupForm.reset();
+        }, 1000);
+    });
+
+
+    function displayMessage(messageText, type) {
+        const messageElement = document.createElement('div');
+        messageElement.textContent = messageText;
+        messageElement.classList.add('message', type, 'show');
+        messageContainer.appendChild(messageElement);
+
 
         // Si le formulaire n'est pas valide, empêcher la soumission et afficher les messages d'erreur
         if (!valid) {
@@ -66,3 +74,12 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+
+        // Supprimer le message après un court délai
+        setTimeout(function() {
+            messageElement.remove();
+        }, 3000); // Supprimer après 3 secondes (ajustez selon vos besoins)
+    }
+ });
+  
+
